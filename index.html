@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress — English B1–B2</title>
+
+<style>
+:root {
+--navy: #20334d;
+--blue: #4267a9;
+--light-blue: #eaf1fc;
+--green: #287a58;
+--light-green: #e6f5ec;
+--red: #b74343;
+--light-red: #fff0ef;
+--gold: #f2c66d;
+--cream: #fffaf1;
+--text: #263244;
+--muted: #69768a;
+--border: #dce3ed;
+}
+* { box-sizing: border-box; }
+body {
+margin: 0;
+font-family: Arial, Helvetica, sans-serif;
+background: #f3f6fb;
+color: var(--text);
+line-height: 1.65;
+}
+header {
+background: linear-gradient(135deg, #20334d, #4267a9);
+color: white;
+padding: 48px 20px 38px;
+text-align: center;
+}
+header .eyebrow {
+text-transform: uppercase;
+letter-spacing: 3px;
+font-size: 12px;
+color: #d8e5ff;
+}
+header h1 {
+font-size: clamp(34px, 6vw, 58px);
+margin: 10px 0;
+letter-spacing: 1px;
+}
+header p { max-width: 650px; margin: auto; color: #e6edfa; }
+.container { max-width: 1050px; margin: auto; padding: 24px 16px 60px; }
+.section {
+background: white;
+border-radius: 18px;
+padding: clamp(18px, 4vw, 32px);
+margin: 24px 0;
+box-shadow: 0 5px 20px rgba(32,51,77,.06);
+}
+.section h2 { color: var(--navy); margin-top: 0; }
+.section-intro { color: var(--muted); }
+.pill {
+display: inline-block;
+border-radius: 30px;
+background: var(--light-blue);
+color: var(--blue);
+padding: 4px 12px;
+font-size: 12px;
+font-weight: bold;
+letter-spacing: .5px;
+}
+.image-grid {
+display: grid;
+grid-template-columns: repeat(2, minmax(0,1fr));
+gap: 18px;
+margin: 20px 0;
+}
+.image-card {
+border: 1px solid var(--border);
+border-radius: 14px;
+overflow: hidden;
+background: white;
+}
+.image-card img {
+width: 100%;
+height: 210px;
+display: block;
+object-fit: cover;
+background: #e9edf4;
+}
+.image-card .caption { padding: 14px; }
+.image-card h3 { margin: 0 0 4px; color: var(--navy); }
+.image-card p { margin: 0; color: var(--muted); font-size: 14px; }
+@media(max-width:650px) {
+.image-grid { grid-template-columns: 1fr; }
+.image-card img { height: 220px; }
+}
+.category-grid {
+display: grid;
+grid-template-columns: repeat(3, minmax(0,1fr));
+gap: 12px;
+margin: 20px 0;
+}
+@media(max-width:700px) {
+.category-grid { grid-template-columns: 1fr; }
+}
+.category-box {
+background: #f8faff;
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 14px;
+}
+.category-box h3 { font-size: 15px; color: var(--blue); margin-top: 0; }
+.sort-row {
+display: grid;
+grid-template-columns: minmax(0,1fr) minmax(180px, .8fr);
+gap: 12px;
+align-items: center;
+padding: 12px 0;
+border-bottom: 1px solid #edf0f5;
+}
+.sort-row:last-child { border-bottom: none; }
+select, input[type="text"] {
+width: 100%;
+padding: 11px 12px;
+border: 1px solid #cbd5e3;
+border-radius: 9px;
+background: white;
+color: var(--text);
+font: inherit;
+}
+select:focus, input:focus {
+outline: 2px solid #9cb8ed;
+outline-offset: 1px;
+}
+button {
+font: inherit;
+font-weight: bold;
+cursor: pointer;
+border: none;
+border-radius: 9px;
+padding: 11px 18px;
+transition: .15s;
+}
+button:hover { filter: brightness(.96); transform: translateY(-1px); }
+.btn-primary { background: var(--blue); color: white; }
+.btn-secondary { background: #edf1f7; color: var(--navy); }
+.btn-gold { background: var(--gold); color: #4d3b12; }
+.button-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.feedback {
+display: none;
+padding: 13px 15px;
+border-radius: 10px;
+margin-top: 16px;
+font-weight: bold;
+}
+.feedback.show { display: block; }
+.feedback.good { background: var(--light-green); color: var(--green); }
+.feedback.bad { background: var(--light-red); color: var(--red); }
+.correct { border-color: var(--green) !important; background: var(--light-green) !important; }
+.incorrect { border-color: var(--red) !important; background: var(--light-red) !important; }
+.meanings {
+margin-top: 22px;
+border: 1px solid var(--border);
+border-radius: 12px;
+overflow: hidden;
+}
+.meanings summary {
+padding: 15px;
+cursor: pointer;
+font-weight: bold;
+background: #f8faff;
+}
+.meaning-list { padding: 5px 18px 18px; }
+.meaning-list li { margin: 9px 0; }
+.word-bank {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+background: #f6f8fc;
+padding: 15px;
+border-radius: 12px;
+margin: 16px 0 22px;
+}
+.word-chip {
+background: white;
+border: 1px solid #b8c8e1;
+color: var(--navy);
+border-radius: 30px;
+padding: 6px 12px;
+font-size: 13px;
+}
+.question {
+padding: 15px 0;
+border-bottom: 1px solid #edf0f5;
+}
+.question:last-child { border-bottom: none; }
+.question p { margin: 0 0 8px; }
+.question input { max-width: 540px; }
+.number {
+display: inline-grid;
+place-items: center;
+width: 28px;
+height: 28px;
+background: var(--light-blue);
+color: var(--blue);
+border-radius: 50%;
+font-size: 13px;
+font-weight: bold;
+margin-right: 6px;
+}
+.scenario {
+border: 1px solid var(--border);
+border-radius: 14px;
+overflow: hidden;
+margin: 20px 0;
+}
+.scenario img {
+display: block;
+width: 100%;
+height: 250px;
+object-fit: cover;
+background: #e9edf4;
+}
+.scenario-content { padding: 18px; }
+.scenario h3 { margin: 0 0 8px; color: var(--navy); }
+.expression-hints {
+display: flex;
+flex-wrap: wrap;
+gap: 7px;
+margin: 12px 0;
+}
+.expression-hints span {
+background: var(--light-blue);
+color: #304e83;
+padding: 5px 10px;
+border-radius: 20px;
+font-size: 13px;
+}
+details.question-prompts {
+background: #f8faff;
+border-radius: 10px;
+padding: 12px 15px;
+margin-top: 12px;
+}
+details.question-prompts summary { cursor: pointer; font-weight: bold; }
+details.question-prompts li { margin: 7px 0; }
+textarea {
+width: 100%;
+min-height: 100px;
+resize: vertical;
+padding: 12px;
+border: 1px solid #cbd5e3;
+border-radius: 9px;
+font: inherit;
+}
+.reflection {
+background: var(--cream);
+border-left: 5px solid var(--gold);
+padding: 18px;
+border-radius: 10px;
+}
+footer { text-align: center; padding: 25px; color: var(--muted); font-size: 13px; }
+.small { font-size: 13px; color: var(--muted); }
+</style>
+</head>
+
+<body>
+<header>
+<div class="eyebrow">English · B1–B2 · Vocabulary</div>
+<h1>PROGRESS</h1>
+<p>Moving forward, getting stuck and overcoming difficulties</p>
+</header>
+
+<main class="container">
+
+<!-- INTRODUCTION -->
+<section class="section">
+<span class="pill">WARM-UP</span>
+<h2>Are you making progress?</h2>
+<p class="section-intro">
+We all experience success, difficulties and moments when nothing seems to work.
+Today, we will learn idioms that help us talk about progress.
+</p>
+
+<div class="image-grid">
+<article class="image-card">
+<img src="https://media.istockphoto.com/id/1130035011/vector/isometric-business-people-came-from-different-way-but-have-same-target.jpg?s=612x612&w=0&k=20&c=vXr7RDpRB49Zgx0VJUg_KxULE3QXE9zNu7dRTxb7vt4="
+alt="A mountain hiking trail"
+onerror="this.style.display='none'">
+<div class="caption">
+<h3>Moving forward</h3>
+<p>Making progress, reaching goals and finding solutions.</p>
+</div>
+</article>
+<article class="image-card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMOF6wRg80iz1Q0QRu-HTvXE0Bj9FqeNXDjcmKJChVaEshBBaNpf7rEbYw&s=10"
+alt="An office workspace"
+onerror="this.style.display='none'">
+<div class="caption">
+<h3>Getting stuck</h3>
+<p>Facing problems, wasting time or making little progress.</p>
+</div>
+</article>
+</div>
+
+<h3>Discuss these questions</h3>
+<ol>
+<li>What helps you make progress when you are learning something new?</li>
+<li>What do you usually do when you feel stuck?</li>
+<li>Can you think of a time when you were successful after a difficult period?</li>
+</ol>
+</section>
+
+<!-- TASK 1 -->
+<section class="section" id="task1">
+<span class="pill">TASK 1 · INTRODUCING VOCABULARY</span>
+<h2>Sort the expressions</h2>
+<p>
+Put each expression into the category that best describes its meaning.
+Some expressions can be used in different contexts, but choose the best category here.
+</p>
+
+<div class="category-grid">
+<div class="category-box">
+<h3> A. MAKING PROGRESS</h3>
+<p>Success, improvement, moving in a positive direction.</p>
+</div>
+<div class="category-box">
+<h3>B. GETTING STUCK</h3>
+<p>Little progress, a wrong approach or a difficult situation.</p>
+</div>
+<div class="category-box">
+<h3>C. TAKING ACTION / CHANGING PLANS</h3>
+<p>Organising yourself, dealing with a problem or delaying a plan.</p>
+</div>
+</div>
+
+<div id="sortTasks"></div>
+
+<div class="button-row">
+<button class="btn-primary" id="checkSort">Check answers</button>
+<button class="btn-secondary" id="resetSort">Reset</button>
+</div>
+<div class="feedback" id="sortFeedback" role="status"></div>
+
+<details class="meanings">
+<summary>Open the vocabulary list: English explanations and Russian meanings</summary>
+<div class="meaning-list">
+<ul>
+<li><b>be barking up the wrong tree</b> — ошибаться в своём подходе, идти по ложному следу.</li>
+<li><b>be flogging a dead horse</b> — тратить силы на безнадёжное дело.</li>
+<li><b>gain ground</b> — набирать популярность, укреплять позиции.</li>
+<li><b>get to grips with something / come to grips with something</b> — разобраться с чем-либо, начать эффективно решать проблему.</li>
+<li><b>get your act together</b> — собраться, организоваться.</li>
+<li><b>go around / round in circles</b> — ходить по кругу, не продвигаться.</li>
+<li><b>be in the doldrums</b> — переживать застой, находиться в упадке.</li>
+<li><b>be in the pipeline</b> — планироваться, находиться в разработке.</li>
+<li><b>light at the end of the tunnel</b> — надежда на скорое завершение трудностей.</li>
+<li><b>make headway</b> — продвигаться вперёд.</li>
+<li><b>be on a roll</b> — добиваться успеха одного за другим.</li>
+<li><b>be on the right track</b> — двигаться в правильном направлении.</li>
+<li><b>put something on hold</b> — отложить что-либо до более подходящего момента.</li>
+</ul>
+</div>
+</details>
+</section>
+
+<!-- TASK 2 -->
+<section class="section" id="task2">
+<span class="pill">TASK 2 · CONTROLLED PRACTICE</span>
+<h2>Complete the sentences</h2>
+<p>
+Complete each sentence with the correct expression from the word bank.
+Change the grammatical form if necessary.
+</p>
+
+<div class="word-bank" id="wordBank"></div>
+<div id="gapTasks"></div>
+
+<div class="button-row">
+<button class="btn-primary" id="checkGaps">Check answers</button>
+<button class="btn-secondary" id="resetGaps">Reset</button>
+</div>
+<div class="feedback" id="gapFeedback" role="status"></div>
+</section>
+
+<!-- TASK 3 -->
+<section class="section" id="task3">
+<span class="pill">TASK 3 · SPEAKING</span>
+<h2>The Progress Meeting</h2>
+<p class="section-intro">
+Imagine you are part of a team working on an important project.
+Your manager has called a meeting to discuss progress. Choose a situation,
+explain the problem and suggest solutions.
+</p>
+
+<article class="scenario">
+<img src="https://sun9-87.vkuserphoto.ru/s/v1/ig2/Q-cMfDWJEF1ypEtLLk3s9LDtmPFTS8aa74w7sYoxvBvQSTYCXSj1DeJ5hTrOYZR3rrOirbxSUcrO44HoJTCpHkaV.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,1536x1024&from=bu&u=SrXTDbp81Px1xBQdjSWKUbvRC0CCuxGo1JJqvG14-98&cs=1536x0"
+alt="Colleagues having a team meeting"
+onerror="this.style.display='none'">
+<div class="scenario-content">
+<h3>Situation 1 — No progress</h3>
+<p>
+Your team has spent weeks discussing the same issue.
+Nobody agrees on a solution, and the deadline is approaching.
+</p>
+<div class="expression-hints">
+<span>go around in circles</span>
+<span>get to grips with</span>
+<span>make headway</span>
+<span>get your act together</span>
+</div>
+<p><b>Your task:</b> Explain why the team is not making progress and suggest two practical solutions.</p>
+<details class="question-prompts">
+<summary>Questions from the manager</summary>
+<ul>
+<li>Why are we going around in circles?</li>
+<li>What do we need to get to grips with first?</li>
+<li>How can we start making headway?</li>
+</ul>
+</details>
+</div>
+</article>
+
+<article class="scenario">
+<img src="https://sun9-55.vkuserphoto.ru/s/v1/ig2/Jdz1zAAIuBaFU3J9PUXj7Rhmy4FMLneoOkPqKxjZYo5nUzbfuvmuZHJdWoLP2uDRElVjJQClj8HvdK35iMvV1Eh-.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x854,1440x960,2048x1366&from=bu&cs=2048x0"
+alt="A team celebrating together"
+onerror="this.style.display='none'">
+<div class="scenario-content">
+<h3>Situation 2 — Things are improving</h3>
+<p>
+Your team has completed several important tasks and received positive feedback.
+More customers are becoming interested in your product.
+</p>
+<div class="expression-hints">
+<span>be on a roll</span>
+<span>gain ground</span>
+<span>be on the right track</span>
+<span>light at the end of the tunnel</span>
+</div>
+<p><b>Your task:</b> Describe the team's success and explain what you should do next.</p>
+<details class="question-prompts">
+<summary>Questions from the manager</summary>
+<ul>
+<li>What makes you think we're on the right track?</li>
+<li>How has our product been gaining ground?</li>
+<li>How can we keep this success going?</li>
+</ul>
+</details>
+</div>
+</article>
+
+<article class="scenario">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmZ4woarTlPWy0YJrKWl82fDI-PYEsrJgqk3l5gMR019sXuY9QB0Kmyvg&s=10"
+alt="A manager reviewing project documents and budget"
+onerror="this.style.display='none'">
+<div class="scenario-content">
+<h3>Situation 3 — A difficult decision</h3>
+<p>
+The budget has been cut, deadlines are approaching, and the current strategy
+isn't working. The team must decide whether to continue, change direction or pause the project.
+</p>
+<div class="expression-hints">
+<span>be flogging a dead horse</span>
+<span>be barking up the wrong tree</span>
+<span>put something on hold</span>
+<span>be in the pipeline</span>
+</div>
+<p><b>Your task:</b> Recommend a course of action and justify your decision.</p>
+<details class="question-prompts">
+<summary>Questions from the manager</summary>
+<ul>
+<li>Are we barking up the wrong tree?</li>
+<li>Should we put the project on hold?</li>
+<li>What alternative plans do we have in the pipeline?</li>
+</ul>
+</details>
+</div>
+</article>
+
+<h3>Prepare your ideas</h3>
+<p class="small">Write a few notes before speaking. Try to use at least five idioms.</p>
+<textarea id="speakingNotes" placeholder="The main problem is... / We should... / I think we're on the right track because..."></textarea>
+<div class="button-row">
+<button class="btn-secondary" id="clearNotes">Clear notes</button>
+</div>
+<p class="small">Use your notes to speak for 1–2 minutes. Your teacher can ask follow-up questions.</p>
+</section>
+
+<!-- FINAL TASK -->
+<section class="section" id="finalTask">
+<span class="pill">FINAL CHALLENGE</span>
+<h2>Tell your own progress story</h2>
+<div class="reflection">
+<p><b>Speaking prompt:</b></p>
+<p>
+Describe a time when you made progress towards a goal.
+Did you ever feel that you were going around in circles?
+How did you get to grips with the problem?
+When did you begin to see light at the end of the tunnel?
+</p>
+<p><b>Challenge:</b> Use at least three idioms from today's lesson.</p>
+</div>
+
+<h3>Self-assessment</h3>
+<p>Tick the statements that are true for you.</p>
+<label><input type="checkbox"> I can explain the meaning of the new idioms.</label><br>
+<label><input type="checkbox"> I can choose the right idiom for a situation.</label><br>
+<label><input type="checkbox"> I can use at least five idioms in a discussion.</label><br>
+<label><input type="checkbox"> I can talk about progress and difficulties in my own life.</label>
+</section>
+
+</main>
+
+<footer>
+English vocabulary lesson · B1–B2 · Progress idioms
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function shuffle(array) {
+for (let i = array.length - 1; i > 0; i--) {
+const j = Math.floor(Math.random() * (i + 1));
+[array[i], array[j]] = [array[j], array[i]];
+}
+return array;
+}
+
+function normalize(value) {
+return value.toLowerCase()
+.trim()
+.replace(/[’‘]/g, "'")
+.replace(/[.!?,;]/g, "")
+.replace(/\s+/g, " ");
+}
+
+// TASK 1: SORT THE EXPRESSIONS
+const sortItems = [
+{phrase:"gain ground", category:"progress"},
+{phrase:"make headway", category:"progress"},
+{phrase:"be on a roll", category:"progress"},
+{phrase:"be on the right track", category:"progress"},
+{phrase:"light at the end of the tunnel", category:"progress"},
+{phrase:"be barking up the wrong tree", category:"stuck"},
+{phrase:"be flogging a dead horse", category:"stuck"},
+{phrase:"go around in circles", category:"stuck"},
+{phrase:"be in the doldrums", category:"stuck"},
+{phrase:"get to grips with something", category:"action"},
+{phrase:"get your act together", category:"action"},
+{phrase:"be in the pipeline", category:"action"},
+{phrase:"put something on hold", category:"action"}
+];
+
+const categoryLabels = {
+progress: "A. Making progress",
+stuck: "B. Getting stuck",
+action: "C. Taking action / changing plans"
+};
+
+let currentSort = [];
+
+function renderSort() {
+currentSort = shuffle([...sortItems]);
+$("sortTasks").innerHTML = currentSort.map((item, i) => `
+<div class="sort-row">
+<label for="sort${i}"><b>${i+1}.</b> ${item.phrase}</label>
+<select id="sort${i}" aria-label="Category for ${item.phrase}">
+<option value="">Choose a category...</option>
+<option value="progress">${categoryLabels.progress}</option>
+<option value="stuck">${categoryLabels.stuck}</option>
+<option value="action">${categoryLabels.action}</option>
+</select>
+</div>
+`).join("");
+$("sortFeedback").className = "feedback";
+$("sortFeedback").textContent = "";
+}
+
+$("checkSort").addEventListener("click", () => {
+let score = 0;
+currentSort.forEach((item, i) => {
+const field = $("sort" + i);
+field.classList.remove("correct", "incorrect");
+if (field.value === item.category) {
+score++;
+field.classList.add("correct");
+} else {
+field.classList.add("incorrect");
+}
+});
+
+const box = $("sortFeedback");
+box.className = "feedback show " + (score === currentSort.length ? "good" : "bad");
+box.textContent = `Your score: ${score}/${currentSort.length}. Green = correct, red = try again.`;
+});
+
+$("resetSort").addEventListener("click", renderSort);
+renderSort();
+
+// TASK 2: GAP-FILL PRACTICE
+const gapItems = [
+{
+sentence:"After winning three competitions in a row, our team is really ___.",
+answer:"on a roll"
+},
+{
+sentence:"The negotiations are difficult, but both sides have finally started to ___.",
+answer:"make headway"
+},
+{
+sentence:"Your plan seems realistic, and the early results suggest we're ___.",
+answer:"on the right track"
+},
+{
+sentence:"Sales have been falling for months, and the business is ___.",
+answer:"in the doldrums"
+},
+{
+sentence:"We've paid off most of our debts. At last, there's ___.",
+answer:"light at the end of the tunnel"
+},
+{
+sentence:"If you think I deleted the file, you're ___. I never even opened it.",
+answer:"barking up the wrong tree"
+},
+{
+sentence:"I need to ___ the new software before the training session.",
+answer:"get to grips with"
+},
+{
+sentence:"The renovation has been ___ until we receive additional funding.",
+answer:"put on hold"
+},
+{
+sentence:"We've tried to convince him ten times. I think we're ___.",
+answer:"flogging a dead horse"
+},
+{
+sentence:"Several exciting changes are ___, including a new website.",
+answer:"in the pipeline"
+},
+{
+sentence:"We keep discussing the same options without making a decision. We're ___.",
+answer:"going around in circles"
+},
+{
+sentence:"You need to ___ if you want to finish everything before Friday.",
+answer:"get your act together"
+},
+{
+sentence:"Electric cars are ___ in many countries as more people choose them.",
+answer:"gaining ground"
+}
+];
+
+let currentGaps = [];
+
+function renderGaps() {
+currentGaps = shuffle([...gapItems]);
+const words = shuffle(gapItems.map(item => item.answer));
+
+$("wordBank").innerHTML = words.map(word =>
+`<span class="word-chip">${word}</span>`
+).join("");
+
+$("gapTasks").innerHTML = currentGaps.map((item, i) => `
+<div class="question">
+<p><span class="number">${i+1}</span>${item.sentence}</p>
+<input type="text" id="gap${i}" autocomplete="off"
+aria-label="Answer ${i+1}" placeholder="Write the missing expression...">
+</div>
+`).join("");
+
+$("gapFeedback").className = "feedback";
+$("gapFeedback").textContent = "";
+}
+
+$("checkGaps").addEventListener("click", () => {
+let score = 0;
+
+currentGaps.forEach((item, i) => {
+const field = $("gap" + i);
+field.classList.remove("correct", "incorrect");
+
+if (normalize(field.value) === normalize(item.answer)) {
+score++;
+field.classList.add("correct");
+} else {
+field.classList.add("incorrect");
+}
+});
+
+const box = $("gapFeedback");
+box.className = "feedback show " + (score === currentGaps.length ? "good" : "bad");
+box.textContent = `Your score: ${score}/${currentGaps.length}. Green = correct, red = check the expression.`;
+});
+
+$("resetGaps").addEventListener("click", renderGaps);
+renderGaps();
+
+// SPEAKING NOTES
+$("clearNotes").addEventListener("click", () => {
+$("speakingNotes").value = "";
+$("speakingNotes").focus();
+});
+</script>
+</body>
+</html>
